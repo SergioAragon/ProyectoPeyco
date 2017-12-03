@@ -18,6 +18,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'created_date')->textInput() ?>
 
+    <?= $form->field($model, 'end_date')->textInput() ?>
+
+    <!--?= $form->field($model, 'color')->textInput() ?-->
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

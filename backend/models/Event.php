@@ -28,8 +28,8 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'created_date'], 'required'],
-            [['created_date'], 'safe'],
+            [['title', 'description', 'created_date', 'end_date'], 'required'],
+            [['created_date', 'end_date'], 'safe'],
             [['title'], 'string', 'max' => 200],
             [['description'], 'string', 'max' => 500],
         ];
@@ -45,6 +45,8 @@ class Event extends \yii\db\ActiveRecord
             'title' => 'Title',
             'description' => 'Description',
             'created_date' => 'Created Date',
+            'end_date' => 'End Date',
+            // 'color' => 'Color',
         ];
     }
 }

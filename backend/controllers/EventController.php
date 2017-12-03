@@ -47,7 +47,11 @@ class EventController extends Controller
           $event->id = $eve->id;
           $event->title = $eve->title;
           // $event->start = date('Y-m-d\Th:m:s\Z');
+          // $event->end = date('Y-m-d\Th:m:s\Z');
           $event->start = $eve->created_date;
+          $event->end = $eve->end_date;
+          // $event->color = $event->color;
+          // $event->url = $eve->url;
           $tasks[] = $event;
         }
 
@@ -75,10 +79,10 @@ class EventController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($data)
+    public function actionCreate()    //($data)
     {
         $model = new Event();
-        $model->created_date = $data;
+        // $model->created_date = $data;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
