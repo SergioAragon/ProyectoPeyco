@@ -66,6 +66,7 @@ class PedidoController extends Controller
         $model = new Pedido();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             return $this->redirect(['view', 'id' => $model->id_pedido]);
         } else {
             return $this->render('create', [

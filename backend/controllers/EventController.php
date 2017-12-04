@@ -8,7 +8,11 @@ use backend\models\EventSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+// use yii\yii2fullcalendar\yii2fullcalendar;
+use yii\web\AssetBundle;
+use yii\jui\JuiAsset;
 
+// use yii2fullcalendar\models\Event;
 /**
  * EventController implements the CRUD actions for Event model.
  */
@@ -44,6 +48,7 @@ class EventController extends Controller
         foreach ($events as $eve)
         {
           $event = new \yii2fullcalendar\models\Event();
+            // $event = new Event();
           $event->id = $eve->id;
           $event->title = $eve->title;
           // $event->start = date('Y-m-d\Th:m:s\Z');
@@ -85,7 +90,9 @@ class EventController extends Controller
         // $model->created_date = $data;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('warning', 'Se ha registrado un evento.');
+            // return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,

@@ -3,6 +3,9 @@
 namespace backend\models;
 
 use Yii;
+use yii\web;
+use yii\base\Model;
+// use yii2fullcalendar\models\Event;
 
 /**
  * This is the model class for table "event".
@@ -14,6 +17,7 @@ use Yii;
  */
 class Event extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -29,7 +33,7 @@ class Event extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'description', 'created_date', 'end_date'], 'required'],
-            [['created_date', 'end_date'], 'safe'],
+            [['created_date', 'end_date', 'color'], 'safe'],
             [['title'], 'string', 'max' => 200],
             [['description'], 'string', 'max' => 500],
         ];
@@ -49,4 +53,6 @@ class Event extends \yii\db\ActiveRecord
             // 'color' => 'Color',
         ];
     }
+
+    
 }

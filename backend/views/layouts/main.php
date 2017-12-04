@@ -36,6 +36,21 @@ if (Yii::$app->controller->action->id === 'login') {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
+        <!-- <link rel="stylesheet" href="css/fullcalendar.css">
+        <script src="js/moment.min.js" ></script>
+        <script src="js/jquery.min.js" ></script>
+        <script src="js/fullcalendar.js" ></script> -->
+        <!-- <script>
+            $(document).ready(function() {
+
+                    // page is now ready, initialize the calendar...
+
+                    $('#calendar').fullCalendar({
+                        // put your options and callbacks here
+                    })
+
+                });
+        </script> -->
         <?php $this->head() ?>
     </head>
     <body class="<?= \dmstr\helpers\AdminLteHelper::skinClass() ?>">
@@ -57,42 +72,42 @@ if (Yii::$app->controller->action->id === 'login') {
             'content.php',
             ['content' => $content, 'directoryAsset' => $directoryAsset]
         ) ?>
-
         
     </div>
 
     <?php $this->endBody() ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-<script>
+    
+    <!-- <script>
+        $(function(){
+            $('select').select2();
+        })
+
     $(function(){
-        $('select').select2();
-    })
 
-$(function(){
+        $(document).on('click','.fc-day', function(){
+            var date = $(this).attr('data-date');
 
-    $(document).on('click','.fc-day', function(){
-        var date = $(this).attr('data-date');
+            $.get('<?=Yii::$app->homeUrl ?>event/index/create/'+ date, function(data){
+                alert(data);
+                $('#modal').modal('show')
+                .find('#modalContent')
+                .html(data);
+                });
 
-        $.get('<?=Yii::$app->homeUrl ?>event/index/create/'+ date, function(data){
-            alert(data);
-            $('#modal').modal('show')
-            .find('#modalContent')
-            .html(data);
+            });
+
+            // get the click of the create button
+            $('#modalButton').click(function(){
+                $('#modal').modal('show')
+                .find('#modalContent')
+                .load($(this).attr('value'));
             });
 
         });
 
-        // get the click of the create button
-        $('#modalButton').click(function(){
-            $('#modal').modal('show')
-            .find('#modalContent')
-            .load($(this).attr('value'));
-        });
 
-    });
-
-
-</script>
+    </script> -->
     </body>
     </html>
     <?php $this->endPage() ?>

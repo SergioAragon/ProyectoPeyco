@@ -376,6 +376,16 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
           // if ($model->sendEmail()) {
+
+            $db = Yii::$app->db;
+                $db->createCommand()->insert('event', [
+                                          //'id_dpm' => $model->id_producto+1,
+                                        'title'=>$model->cliente_id,
+                                        'description'=> 'Pedido'.' '.$model->id_pedido,
+                                        'created_date'=>$model->fecha_pedido,
+                                    ])->execute();
+
+
                 Yii::$app->session->setFlash('success', 'Su pedido ha sido registrado.');
                 // Yii::$app->session->setFlash('success', 'Se ha registrado un nuevo pedido.');
             return $this->render('viewPedido', [                
